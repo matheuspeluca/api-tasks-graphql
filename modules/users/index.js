@@ -1,9 +1,12 @@
 const { gql } = require('apollo-server-express');
-const createUser = require('./mutations/create-user');
-const updateUser = require('./mutations/update-user');
-const removeUser = require('./mutations/delete-user');
-const user = require('./queries/user');
-const users = require('./queries/users');
+const userMutationFunctions = require('./mutations/user-mutations');
+const userQueriesFunctions = require('./queries/user-queries');
+
+const createUser = userMutationFunctions.createUser;
+const removeUser = userMutationFunctions.deleteUser;
+const updateUser = userMutationFunctions.updateUser;
+const user = userQueriesFunctions.getUserById;
+const users = userQueriesFunctions.getAllUsers;
 
 const typeDefs = gql`
   type User {

@@ -1,11 +1,14 @@
 const { gql } = require('apollo-server-express');
-const createTask = require('./mutations/create-task');
-const updateTask = require('./mutations/update-task');
-const removeTask = require('./mutations/delete-task');
-const task = require('./queries/task');
-const tasks = require('./queries/tasks');
-const pendingTasks = require('./queries/pending-tasks');
-const completedTasks = require('./queries/completed-tasks');
+const taskMutationFunctions = require('./mutations/task-mutations');
+const taskQueryFunctions = require('./queries/task-queries');
+
+const createTask = taskMutationFunctions.createTask
+const updateTask = taskMutationFunctions.uptadeTask
+const removeTask = taskMutationFunctions.deleteTask
+const task = taskQueryFunctions.getTaskById
+const tasks = taskQueryFunctions.getAllTasks
+const pendingTasks = taskQueryFunctions.getPendingTasks
+const completedTasks = taskQueryFunctions.getCompletedTasks
 
 const typeDefs = gql`
   type Task {
